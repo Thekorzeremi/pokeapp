@@ -18,6 +18,9 @@ https://pokeapi.co/api/v2/pokemon/{id or name}/ > data > stats
 quatre attaques
 https://pokeapi.co/api/v2/pokemon/{id or name}/ > data > moves
 
+description
+https://pokeapi.co/api/v2/characteristic/{id}/ > description
+
 url:'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000',
 url:'https://pokeapi.co/api/v2/pokemon/1/?offset=0&limit=2000', = url:'https://pokeapi.co/api/v2/pokemon/{id}/?offset=0&limit=2000' > $id from 0 to 1292
 
