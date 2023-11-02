@@ -1,31 +1,9 @@
 import '../styles/Home.scss'
 import React, { useState, useEffect } from 'react';
-import axios from "axios";
-
-
+import axios from "axios"; 
 import pokeball from '../assets/pokeball.png'
 import uncaught from '../assets/uncaught.png'
 import caught from '../assets/logo.png'
-
-import fire from '../assets/types/fire.png'
-import fight from '../assets/types/fight.png'
-import psy from '../assets/types/psy.png'
-import poison from '../assets/types/poison.png'
-import dragon from '../assets/types/dragon.png'
-import ghost from '../assets/types/ghost.png'
-import dark from '../assets/types/dark.png'
-import ground from '../assets/types/ground.png'
-import fairy from '../assets/types/fairy.png'
-import water from '../assets/types/water.png'
-import fly from '../assets/types/fly.png'
-import bug from '../assets/types/bug.png'
-import normal from '../assets/types/normal.png'
-import rock from '../assets/types/rock.png'
-import electric from '../assets/types/electric.png'
-import grass from '../assets/types/grass.png'
-import ice from '../assets/types/ice.png'
-import steel from '../assets/types/steel.png'
-
 import fire from '../assets/types/fire.png'
 import fight from '../assets/types/fight.png'
 import psy from '../assets/types/psy.png'
@@ -52,14 +30,7 @@ export default function Home() {
     const [pkType1, setPkType1] = useState('');
     const [pkType2, setPkType2] = useState('');
     const [pkStats, setPkStats] = useState('');
-    const [pkImg, setPkImg] = useState('');
-    const [pkName, setPkName] = useState('');
-    const [pkId, setPkId] = useState('');
-    const [pkType1, setPkType1] = useState('');
-    const [pkType2, setPkType2] = useState('');
-    const [pkStats, setPkStats] = useState('');
     const [pkArray, setPkArray] = useState([]); // State pour stocker les données des Pokémon
-    const [imgArray, setImgArray] = useState([]); // 
     const [imgArray, setImgArray] = useState([]); // 
 
     useEffect(() => {
@@ -248,10 +219,10 @@ export default function Home() {
                 break;
     }
 
-    let classType1;
-    let classType2;
-    let imgType1;
-    let imgType2;
+    // let classType1;
+    // let classType2;
+    // let imgType1;
+    // let imgType2;
 
     switch(pkType1) {
         case "bug":
