@@ -34,6 +34,7 @@ export default function Home() {
     const [pkArray, setPkArray] = useState([]); // State pour stocker les données des Pokémon
     const [imgArray, setImgArray] = useState([]); // 
     const [isLoading, setIsLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -68,6 +69,11 @@ export default function Home() {
       }, []);
 
     const [isPopupOpen, setPopupOpen] = useState(false);
+
+    const filteredPokemon = pkArray.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  
 
     const openPopup = (pokemon) => {
         setPopupOpen(true);
@@ -511,7 +517,7 @@ export default function Home() {
             )}
             <div className="searchbar">
                 <img src={ pokeball } alt="" />
-                <input type="text" placeholder="Search"/>
+                <input type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
             </div>
             <div className="filter">
                 <div className="alpha" id='btn'>
@@ -535,7 +541,24 @@ export default function Home() {
                 </div>
             ) : (
             <div className="container">
-                {pkArray.map((pokemon, index) => (
+                {searchQuery === '' ? (
+                    pkArray.map((pokemon, index) => (
+                        <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
+                            <div className="pp">
+                                <img src={pokemon.img} alt={pokemon.name} />
+                            </div>
+                            <div className="details">
+                                <div className="name">
+                                    <p>{pokemon.name}</p>
+                            </div>
+                            <div className="number">
+                                <p>ID: {pokemon.id}</p>
+                            </div>
+                        </div>
+                </div>
+                ))
+                ) : (
+                filteredPokemon.map((pokemon, index) => (
                     <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
                         <div className="pp">
                             <img src={pokemon.img} alt={pokemon.name} />
@@ -543,13 +566,13 @@ export default function Home() {
                         <div className="details">
                             <div className="name">
                                 <p>{pokemon.name}</p>
+                            </div>
                         </div>
                         <div className="number">
                             <p>ID: {pokemon.id}</p>
                         </div>
                     </div>
-            </div>
-            ))}
+                )))}
             </div>
             )}
         </div>
