@@ -32,11 +32,23 @@ export default function Home() {
     const [pkStats, setPkStats] = useState('');
     const [pkArray, setPkArray] = useState([]); // State pour stocker les données des Pokémon
     const [imgArray, setImgArray] = useState([]); // 
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
           const tempPkArray = [];
-          for (let current = 1; current < 1000; current++) {
+          for (let current = 1; current < 1018; current++) {
+            const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
+            const response = await axios.get(url);
+            const { name, id, sprites } = response.data;
+            const officialArtworkURL = sprites.other['official-artwork'].front_default;
+            tempPkArray.push({
+              id,
+              name,
+              img: officialArtworkURL,
+            });
+          }
+          for (let current = 10001; current < 10264; current++) {
             const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
             const response = await axios.get(url);
             const { name, id, sprites } = response.data;
@@ -48,6 +60,7 @@ export default function Home() {
             });
           }
           setPkArray(tempPkArray);
+          setIsLoading(false);
         };
     
         fetchData();
@@ -55,9 +68,11 @@ export default function Home() {
 
     const [isPopupOpen, setPopupOpen] = useState(false);
 
-    const openPopup = () => {
+    const openPopup = (pokemon) => {
         setPopupOpen(true);
-
+        setPkImg(pokemon.img);
+        setPkName(pokemon.name);
+        setPkId(pokemon.id);
     };
 
     const closePopup = () => {
@@ -508,9 +523,12 @@ export default function Home() {
                     <p>ID</p>
                 </div>
             </div>
+            {isLoading ? (
+                <div className="loading">Chargement en cours...</div>
+            ) : (
             <div className="container">
                 {pkArray.map((pokemon, index) => (
-                    <div className="cards" onClick={openPopup} key={index}>
+                    <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
                         <div className="pp">
                             <img src={pokemon.img} alt={pokemon.name} />
                         </div>
@@ -524,128 +542,8 @@ export default function Home() {
                     </div>
             </div>
             ))}
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
-                <div className="cards">
-                    <div className="pp"></div>
-                    <div className="details">
-                        <div className="name">
-                            <p>Name</p>
-                        </div>
-                        <div className="number">
-                            <p>1</p>
-                        </div>
-                    </div>
-                </div>
             </div>
+            )}
         </div>
     )
 }
