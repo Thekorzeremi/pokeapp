@@ -8,25 +8,25 @@ export default function Home() {
     const [pkName, setPkName] = useState('');
     const [pkId, setPkId] = useState('');
 
-    // useEffect(() => {
-    //     const test = axios
-    //         .get("https://pokeapi.co/api/v2/pokemon/6", {
-    //         })
-    //         .then(function (response) {
-    //             // console.log(response.data);
-    //             // pkId = response.data.id;
-    //             // pkName = response.data.name;
-    //             let imgUrl;
-    //             let nameUrl;
-    //             let idUrl;
-    //             imgUrl = response.data.sprites.other["official-artwork"].front_default;
-    //             nameUrl = response.data.name;
-    //             idUrl = response.data.id;
-    //             setPkImg(imgUrl);
-    //             setPkName(nameUrl);
-    //             setPkId(idUrl);
-    //         })
-    // })
+    useEffect(() => {
+        const test = axios
+            .get("https://pokeapi.co/api/v2/pokemon/6", {
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                // pkId = response.data.id;
+                // pkName = response.data.name;
+                let imgUrl;
+                let nameUrl;
+                let idUrl;
+                imgUrl = response.data.sprites.other["official-artwork"].front_default;
+                nameUrl = response.data.name;
+                idUrl = response.data.id;
+                setPkImg(imgUrl);
+                setPkName(nameUrl);
+                setPkId(idUrl);
+            })
+    })
 
     const [isPopupOpen, setPopupOpen] = useState(false);
 
