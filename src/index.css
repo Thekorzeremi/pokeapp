@@ -2,13 +2,12 @@ body {
   height: 100vh;
   width: 100vw;
   background: rgb(208,247,163);
-  background: black;
+  background: linear-gradient(180deg, rgba(208,247,163,1) 0%, rgba(205,247,235,1) 58%);
 }
 
 html {
   box-sizing: border-box;
   font-size: 16px;
-  visibility: hidden;
 }
 
 *, *:before, *:after {
@@ -32,4 +31,7 @@ img {
 
 :root {
   --color-primary: #14A4A8;
+  --color-secondary: #28A76A;
+  --color-light: #F7FBF6;
+  --color-gray: #F7FBF6;
 }
