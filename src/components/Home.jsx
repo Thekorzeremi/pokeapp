@@ -7,9 +7,9 @@ export default function Home() {
     })
     .then(function (response) {
         console.log(response.data)
+        console.log(response.data.id)
         console.log(response.data.name)
-        let name = response.data.sprites.other.official-artwork
-        console.log(name)
+        console.log(response.data.sprites.other["official-artwork"])
     })
     return (
         <div>
