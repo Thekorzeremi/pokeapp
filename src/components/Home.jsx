@@ -37,13 +37,14 @@ export default function Home() {
         const fetchData = async () => {
           const tempPkArray = [];
           for (let current = 1; current < 1000; current++) {
-            const url = `https://pokeapi.co/api/v2/pokemon-form/${current}`;
+            const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
             const response = await axios.get(url);
             const { name, id, sprites } = response.data;
+            const officialArtworkURL = sprites.other['official-artwork'].front_default;
             tempPkArray.push({
               id,
               name,
-              img: sprites.front_default,
+              img: officialArtworkURL,
             });
           }
           setPkArray(tempPkArray);
