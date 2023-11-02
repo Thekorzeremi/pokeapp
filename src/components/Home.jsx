@@ -1,6 +1,9 @@
 import '../styles/Home.scss'
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
+import pokeball from '../assets/pokeball.png'
+import uncaught from '../assets/uncaught.png'
+import caught from '../assets/logo.png'
 
 export default function Home() {
 
@@ -46,7 +49,9 @@ export default function Home() {
                         &times;
                         </span>
                         <div className="popup-left">
-                            <div className="popup-image"></div>
+                            <div className="popup-image">
+                                {/* <img src={pkImg} alt={pkName} /> */}
+                            </div>
                             <div className="stats-popup">
                                 <div className="row">
                                     <div className="bar-stats"></div>
@@ -82,13 +87,15 @@ export default function Home() {
                         </div>
                         <div className="popup-details">
                             <div className="popup-name">
-                                <h2>Name</h2>
+                                {/* <h2>{pkName}</h2> */}
                             </div>
                             <div className="popup-types">
                                 <div className="type">Feu</div>
                                 <div className="type">Eau</div>
                             </div>
                             <div className="popup-description">
+                                {/* <p>ID : { pkId }</p> */}
+                                <br/>
                                 <p>ZER DSFQ DSF E RQS DFQ SDF ZER FGDSQ  ZEF SQ </p>
                             </div>
                             <div className="popup-attacks">
@@ -102,6 +109,7 @@ export default function Home() {
                 </div>
             )}
             <div className="searchbar">
+                <img src={ pokeball } alt="" />
                 <input type="text" placeholder="Search"/>
             </div>
             <div className="filter">
@@ -112,146 +120,146 @@ export default function Home() {
                     <p>Type</p>
                 </div>
                 <div id='btn'>
-                    <p>Temp</p>
+                    <p>ID</p>
                 </div>
             </div>
             <div className="container">
-            <div className="cards">
-                <div className="pp">
-                    {/* <img src={ pkImg }></img> */}
-                </div>
-                <div className="details">
-                    <div className="name">
-                        {/* <p>{ pkName }</p> */}
+                <div className="cards" onClick={openPopup}>
+                    <div className="pp">
+                        {/* <img src={ pkImg }></img> */}
                     </div>
-                    <div className="number">
-                        {/* <p>{ pkId }</p> */}
-                    </div>
-                </div>
-            </div>
-            <div className="cards" onClick={openPopup}>
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                    <div className="details">
+                        <div className="name">
+                            {/* <p>{ pkName }</p> */}
+                            {/* <img src={ uncaught } alt="" /> */}
+                            <img src={ caught } alt="" />
+                        </div>
+                        <div className="number">
+                            {/* <p>{ pkId }</p> */}
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
-                    </div>
-                </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
-                    </div>
-                </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
-                    </div>
-                </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
-                    </div>
-                </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
-                    </div>
-                </div>
-            </div>
-            <div className="cards">
-                <div className="pp"></div>
-                <div className="details">
-                    <div className="name">
-                        <p>Name</p>
-                    </div>
-                    <div className="number">
-                        <p>1</p>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {/* <div className="cards"></div> */}
-
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
+                <div className="cards">
+                    <div className="pp"></div>
+                    <div className="details">
+                        <div className="name">
+                            <p>Name</p>
+                        </div>
+                        <div className="number">
+                            <p>1</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )
