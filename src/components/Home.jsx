@@ -1,30 +1,33 @@
 import '../styles/Home.scss'
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import { useState } from 'react';
 
 export default function Home() {
-    // let name
-    // const test = axios
-    // .get("https://pokeapi.co/api/v2/pokemon/6", {
-    // })
-    // .then(function (response) {
-    //     console.log(response.data)
-    //     console.log(response.data.name)
-    //     let name = response.data.sprites.other.official-artwork
-    //     console.log(name)
-    // })
+    const [pkImg, setPkImg] = useState('');
+    const [pkName, setPkName] = useState('');
+    const [pkId, setPkId] = useState('');
 
-    const [isPopupOpen, setPopupOpen] = useState(false);
+    useEffect(() => {
+        const test = axios
+            .get("https://pokeapi.co/api/v2/pokemon/6", {
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                // pkId = response.data.id;
+                // pkName = response.data.name;
+                let imgUrl;
+                let nameUrl;
+                let idUrl;
+                imgUrl = response.data.sprites.other["official-artwork"].front_default;
+                nameUrl = response.data.name;
+                idUrl = response.data.id;
+                setPkImg(imgUrl);
+                setPkName(nameUrl);
+                setPkId(idUrl);
+            })
+    })
 
-    const openPopup = () => {
-        setPopupOpen(true);
-
-    };
-
-    const closePopup = () => {
-        setPopupOpen(false);
-
-    };
     return (
         <div className='content'>
             {isPopupOpen && (
@@ -105,13 +108,15 @@ export default function Home() {
             </div>
             <div className="container">
             <div className="cards">
-                <div className="pp"></div>
+                <div className="pp">
+                    <img src={ pkImg }></img>
+                </div>
                 <div className="details">
                     <div className="name">
-                        <p>Name</p>
+                        <p>{ pkName }</p>
                     </div>
                     <div className="number">
-                        <p>1</p>
+                        <p>{ pkId }</p>
                     </div>
                 </div>
             </div>
