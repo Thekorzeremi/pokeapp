@@ -6,21 +6,28 @@ export default function Home() {
     const [pkImg, setPkImg] = useState('');
     const [pkName, setPkName] = useState('');
     const [pkId, setPkId] = useState('');
+    const pkNameArray = [];
 
     useEffect(() => {
+        // for (let )
+        // const pkAllName = axios
+        //     .get("https://pokeapi.co/api/v2/pokemon/") , {
+        //     })
+        //     .then(function (response) {}) 
+
         const test = axios
-            .get("https://pokeapi.co/api/v2/pokemon/6", {
+            .get("https://pokeapi.co/api/v2/pokemon/1", {
             })
-            .then(function (response) {
+            .then(function (response2) {
                 // console.log(response.data);
                 // pkId = response.data.id;
                 // pkName = response.data.name;
                 let imgUrl;
                 let nameUrl;
                 let idUrl;
-                imgUrl = response.data.sprites.other["official-artwork"].front_default;
-                nameUrl = response.data.name;
-                idUrl = response.data.id;
+                imgUrl = response2.data.sprites.other["official-artwork"].front_default;
+                nameUrl = response2.data.name;
+                idUrl = response2.data.id;
                 setPkImg(imgUrl);
                 setPkName(nameUrl);
                 setPkId(idUrl);
