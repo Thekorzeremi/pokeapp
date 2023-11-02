@@ -6,27 +6,48 @@ import uncaught from '../assets/uncaught.png'
 import caught from '../assets/logo.png'
 
 export default function Home() {
+    const [pkArray, setPkArray] = useState([]); // State pour stocker les données des Pokémon
+    const [imgArray, setImgArray] = useState([]); // State pour stocker les images des Pokémon
 
     useEffect(() => {
-        let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000"
-        let pkArray = []
-        let imgArray = []
+        let url = "https://pokeapi.co/api/v2/pokemon/?limit=100000&offset=0";
 
         axios.get(url, {}).then(function (response) {
             let count = response.data.count;
+            const tempPkArray = [];
+            // const tempImgArray = [];
+
             for (let current = 0; current < count; current++) {
                 let nameUrl = response.data.results[current].name;
-                pkArray.push({name: nameUrl, id: current + 1});
+                let urlUrl = response.data.results[current].url;
+                tempPkArray.push({ name: nameUrl, url: urlUrl});
             }
-        })
-        for(let current2 = 0; current2 < 1292; current2++) {
-            let pkUrl = "https://pokeapi.co/api/v2/pokemon/" + (current2 + 1);
-            axios.get(pkUrl, {}).then(function (response2) {
-                let imgUrl = response2.data.sprites.other['official-artwork'].front_default
-                imgArray.push({img: imgUrl})
-            })
-        }        
-    })
+            setPkArray(tempPkArray);
+
+            let lenght = tempPkArray.length;
+            
+            for (let current2 = 0; current2 < lenght; current2++) {
+                
+            }
+
+            // for (let current2 = 1; current2 < 1017; current2++) {
+            //     let pkUrl = "https://pokeapi.co/api/v2/pokemon/" + (current2);
+            //     axios.get(pkUrl, {}).then(function (response2) {
+            //         let imgUrl = response2.data.sprites.other['official-artwork'].front_default;
+            //         tempImgArray.push({ img: imgUrl, id: current2 });
+            //     });
+            // }
+            // for (let current3 = 10001; current3 < 10275; current3++) {
+            //     let pkUrl2 = "https://pokeapi.co/api/v2/pokemon/" + (current3);
+            //     axios.get(pkUrl2, {}).then(function (response3) {
+            //         let imgUrl = response3.data.sprites.other['official-artwork'].front_default;
+            //         tempImgArray.push({ img: imgUrl });
+            //     });
+            // } 
+            // setImgArray(tempImgArray);
+            // console.log(tempPkArray)
+        });
+    }, [])
 
     const [isPopupOpen, setPopupOpen] = useState(false);
 
