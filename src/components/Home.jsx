@@ -1,14 +1,16 @@
 import axios from "axios";
 
 export default function Home() {
-    const test = axios({
-        url:'https://pokeapi.co/api/v2/pokemon/6/',
-        method: 'get',
-        transformRequest: [function (data) {
-            return data;
-        }]
-    });
-    console.log(test);
+    let name
+    const test = axios
+    .get("https://pokeapi.co/api/v2/pokemon/6", {
+    })
+    .then(function (response) {
+        console.log(response.data)
+        console.log(response.data.name)
+        let name = response.data.sprites.other.official-artwork
+        console.log(name)
+    })
     return (
         <div>
             <p>Hello World !</p>
