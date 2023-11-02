@@ -40,4 +40,95 @@ img {
   --color-border: #118185;
   --color-light: #F7FBF6;
   --color-gray: #96A792;
+
+  --color-bug: #35BC00;
+  --color-fight: #CE084A;
+  --color-psy: #F79BEE;
+  --color-poison: #8C39C6;
+  --color-dragon: #0092BF;
+  --color-ghost: #0C0E26;
+  --color-dark: #393763;
+  --color-ground: #D8B586;
+  --color-fire: #FCC7A1;
+  --color-fairy: #EAABCF;
+  --color-water: #396A9B;
+  --color-fly: #DBF2F9;
+  --color-normal: #D1D3D3;
+  --color-rock: #C6A65F;
+  --color-electic: #FCFF82;
+  --color-grass: #27BA7A;
+  --color-ice: #00C5CC;
+  --color-steel: #395863;
+}
+
+.bug {
+  background-color: var(--color-bug);
+}
+
+.fight {
+  background-color: var(--color-fight);
+}
+
+.psy {
+  background-color: var(--color-psy);
+}
+
+.poison {
+  background-color: var(--color-poison);
+}
+
+.dragon {
+  background-color: var(--color-dragon);
+}
+
+.ghost {
+  background-color: var(--color-ghost);
+}
+
+.dark {
+  background-color: var(--color-dark);
+}
+
+.ground {
+  background-color: var(--color-ground);
+}
+
+.fire {
+  background-color: var(--color-fire);
+}
+
+.fairy {
+  background-color: var(--color-fairy);
+}
+
+.water {
+  background-color: var(--color-water);
+}
+
+.fly {
+  background-color: var(--color-fly);
+}
+
+.normal {
+  background-color: var(--color-normal);
+}
+
+.rock {
+  background-color: var(--color-rock);
+}
+
+.electric {
+  background-color: var(--color-electic);
+}
+
+.grass {
+  background-color: var(--color-grass);
+}
+
+.ice {
+  background-color: var(--color-ice);
+}
+
+.steel {
+  background-color: var(--color-steel);
 }
