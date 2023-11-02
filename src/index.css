@@ -1,6 +1,8 @@
 body {
   height: 100vh;
   width: 100vw;
+  background: rgb(208,247,163);
+  background: black;
 }
 
 html {
@@ -25,4 +27,8 @@ ol, ul {
 img {
   max-width: 100%;
   height: auto;
+}
+
+:root {
+  --color-primary: 
 }
