@@ -22,6 +22,7 @@ import electric from '../assets/types/electric.png'
 import grass from '../assets/types/grass.png'
 import ice from '../assets/types/ice.png'
 import steel from '../assets/types/steel.png'
+import load from '../assets/load.gif'
 
 export default function Home() {
     const [pkImg, setPkImg] = useState('');
@@ -524,7 +525,14 @@ export default function Home() {
                 </div>
             </div>
             {isLoading ? (
-                <div className="loading">Chargement en cours...</div>
+                <div className="loading">
+                    <div className="load-title">
+                        Les Pokémon arrivent...
+                    </div>
+                    <div className="load-gif">
+                        <img src={load} className="gif-logo" alt="load" />
+                    </div>
+                </div>
             ) : (
             <div className="container">
                 {pkArray.map((pokemon, index) => (
