@@ -1,17 +1,32 @@
 import '../styles/Home.scss'
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
 export default function Home() {
-    let name
-    const test = axios
-    .get("https://pokeapi.co/api/v2/pokemon/6", {
+    const [pkImg, setPkImg] = useState('');
+    const [pkName, setPkName] = useState('');
+    const [pkId, setPkId] = useState('');
+
+    useEffect(() => {
+        const test = axios
+            .get("https://pokeapi.co/api/v2/pokemon/6", {
+            })
+            .then(function (response) {
+                // console.log(response.data);
+                // pkId = response.data.id;
+                // pkName = response.data.name;
+                let imgUrl;
+                let nameUrl;
+                let idUrl;
+                imgUrl = response.data.sprites.other["official-artwork"].front_default;
+                nameUrl = response.data.name;
+                idUrl = response.data.id;
+                setPkImg(imgUrl);
+                setPkName(nameUrl);
+                setPkId(idUrl);
+            })
     })
-    .then(function (response) {
-        console.log(response.data)
-        console.log(response.data.id)
-        console.log(response.data.name)
-        console.log(response.data.sprites.other["official-artwork"])
-    })
+
     return (
         <div className='content'>
             <div className="searchbar">
@@ -30,13 +45,15 @@ export default function Home() {
             </div>
             <div className="container">
             <div className="cards">
-                <div className="pp"></div>
+                <div className="pp">
+                    <img src={ pkImg }></img>
+                </div>
                 <div className="details">
                     <div className="name">
-                        <p>Name</p>
+                        <p>{ pkName }</p>
                     </div>
                     <div className="number">
-                        <p>1</p>
+                        <p>{ pkId }</p>
                     </div>
                 </div>
             </div>
