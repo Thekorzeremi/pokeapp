@@ -4,29 +4,26 @@ import axios from "axios";
 
 export default function Home() {
 
-    const [pkImg, setPkImg] = useState('');
-    const [pkName, setPkName] = useState('');
-    const [pkId, setPkId] = useState('');
+    useEffect(() => {
+        let url = "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=2000"
+        let pkArray = []
+        let imgArray = []
 
-    // useEffect(() => {
-    //     const test = axios
-    //         .get("https://pokeapi.co/api/v2/pokemon/6", {
-    //         })
-    //         .then(function (response) {
-    //             // console.log(response.data);
-    //             // pkId = response.data.id;
-    //             // pkName = response.data.name;
-    //             let imgUrl;
-    //             let nameUrl;
-    //             let idUrl;
-    //             imgUrl = response.data.sprites.other["official-artwork"].front_default;
-    //             nameUrl = response.data.name;
-    //             idUrl = response.data.id;
-    //             setPkImg(imgUrl);
-    //             setPkName(nameUrl);
-    //             setPkId(idUrl);
-    //         })
-    // })
+        axios.get(url, {}).then(function (response) {
+            let count = response.data.count;
+            for (let current = 0; current < count; current++) {
+                let nameUrl = response.data.results[current].name;
+                pkArray.push({name: nameUrl, id: current + 1});
+            }
+        })
+        for(let current2 = 0; current2 < 1292; current2++) {
+            let pkUrl = "https://pokeapi.co/api/v2/pokemon/" + (current2 + 1);
+            axios.get(pkUrl, {}).then(function (response2) {
+                let imgUrl = response2.data.sprites.other['official-artwork'].front_default
+                imgArray.push({img: imgUrl})
+            })
+        }        
+    })
 
     const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -121,14 +118,14 @@ export default function Home() {
             <div className="container">
             <div className="cards">
                 <div className="pp">
-                    <img src={ pkImg }></img>
+                    {/* <img src={ pkImg }></img> */}
                 </div>
                 <div className="details">
                     <div className="name">
-                        <p>{ pkName }</p>
+                        {/* <p>{ pkName }</p> */}
                     </div>
                     <div className="number">
-                        <p>{ pkId }</p>
+                        {/* <p>{ pkId }</p> */}
                     </div>
                 </div>
             </div>
