@@ -547,7 +547,7 @@
                 {isLoading ? (
                     <div className="loading">
                         <div className="load-title">
-                            Les Pokémons arrivent...
+                            Pokemons coming...
                         </div>
                         <div className="load-gif">
                             <img src={load} className="gif-logo" alt="load" />

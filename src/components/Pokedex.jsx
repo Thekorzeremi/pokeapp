@@ -1,6 +1,5 @@
 import "../styles/Pokedex.scss";
 import React, { useState } from 'react';
-import Popup from '../components/Erase.jsx';
 
 export default function Pokedex() {
 
@@ -9,6 +8,7 @@ export default function Pokedex() {
 
     const erasePk = () => {
         localStorage.clear();
+        alert("ALL POKEMONS REMOVED FROM LOCALSTORAGE")
         window.location.reload();
     }
 
@@ -23,7 +23,7 @@ export default function Pokedex() {
         <div className='content'>
             <div className="pk-sct">
                 <div className="title">
-                    <p>Mon pokédex</p>
+                    <p>My Pokedex</p>
                 </div>
                 <div className="pk-erase">
                     <div className="erase-btn" onClick={erasePk}><p>ERASE ALL</p></div>
