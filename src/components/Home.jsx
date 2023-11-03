@@ -46,6 +46,10 @@
             if (!localStorage.getItem('selectedPokemon')) {
                 localStorage.setItem('selectedPokemon', '[]');
             }
+            const storedPk = JSON.parse(localStorage.getItem('selectedPokemon'));
+            const isUpdate = () => {
+                
+            } 
             const fetchData = async () => {
             const tempPkArray = [];
             for (let current = 1; current < 250; current++) {
