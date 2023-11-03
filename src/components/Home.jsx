@@ -53,7 +53,6 @@
                 types,
                 img: officialArtworkURL,
                 });
-                console.log(tempPkArray)
             }
             for (let current = 250; current < 500; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
@@ -66,7 +65,6 @@
                 types,
                 img: officialArtworkURL,
                 });
-                console.log(tempPkArray)
             }
             for (let current = 500; current < 750; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
@@ -79,7 +77,6 @@
                 types,
                 img: officialArtworkURL,
                 });
-                console.log(tempPkArray)
 
             }
             for (let current = 750; current < 1018; current++) {
@@ -121,6 +118,10 @@
         const filteredPokemon = pkArray.filter((pokemon) =>
             pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
         );
+
+        const addToPokedex = () => {
+            console.log("test");
+        }
     
 
         const openPopup = (pokemon) => {
@@ -227,156 +228,6 @@
                     imgType2 = bug
                     break;
                 case "fight":
-                    classType2 = "fight";
-                    imgType2 = fight
-                    break;
-                case "psy":
-                    classType2 = "psy";
-                    imgType2 = fight
-                    break;
-                case "poison":
-                    classType2 = "poison";
-                    imgType2 = poison
-                    break;
-                case "dragon":
-                    classType2 = "dragon";
-                    imgType2 = dragon
-                    break;
-                case "ghost":
-                    classType2 = "ghost";
-                    imgType2 = ghost
-                    break;
-                case "dark":
-                    classType2 = "dark";
-                    imgType2 = dark
-                    break;
-                case "ground":
-                    classType2 = "ground";
-                    imgType2 = ground
-                    break;
-                case "fire":
-                    classType2 = "fire";
-                    imgType2 = fire
-                    break;
-                case "fairy":
-                    classType2 = "fairy";
-                    imgType2 = fairy
-                    break;
-                case "water":
-                    classType2 = "water";
-                    imgType2 = water
-                    break;
-                case "flying":
-                    classType2 = "fly";
-                    imgType2 = fly
-                    break;
-                case "normal":
-                    classType2 = "normal";
-                    imgType2 = normal
-                    break;
-                case "steel":
-                    classType2 = "steel";
-                    imgType2 = steel
-                    break;
-                case "rock":
-                    classType2 = "rock";
-                    imgType2 = rock
-                    break;
-                case "electric":
-                    classType2 = "electric";
-                    imgType2 = electric
-                    break;
-                case "grass":
-                    classType2 = "grass";
-                    imgType2 = grass
-                    break;
-                case "ice":
-                    classType2 = "ice";
-                    imgType2 = ice
-                    break;
-        }
-
-        switch(pkType1) {
-            case "bug":
-                classType1 = "bug";
-                imgType1 = bug
-                break;
-            case "fighting":
-                classType1 = "fight";
-                imgType1 = fight
-                break;
-            case "psychic":
-                classType1 = "psy";
-                imgType1 = psy
-                break;
-            case "poison":
-                classType1 = "poison";
-                imgType1 = poison
-                break;
-            case "dragon":
-                classType1 = "dragon";
-                imgType1 = dragon
-                break;
-            case "ghost":
-                classType1 = "ghost";
-                imgType1 = ghost
-                break;
-            case "dark":
-                classType1 = "dark";
-                imgType1 = dark
-                break;
-            case "ground":
-                classType1 = "ground";
-                imgType1 = ground
-                break;
-            case "fire":
-                classType1 = "fire";
-                imgType1 = fire
-                break;
-            case "fairy":
-                classType1 = "fairy";
-                imgType1 = fairy
-                break;
-            case "water":
-                classType1 = "water";
-                imgType1 = water
-                break;
-            case "fly":
-                classType1 = "fly";
-                imgType1 = fly
-                break;
-            case "normal":
-                classType1 = "normal";
-                imgType1 = normal
-                break;
-            case "steel":
-                classType1 = "steel";
-                imgType1 = steel
-                break;
-            case "rock":
-                classType1 = "rock";
-                imgType1 = rock
-                break;
-            case "electric":
-                classType1 = "electric";
-                imgType1 = electric
-                break;
-            case "grass":
-                classType1 = "grass";
-                imgType1 = grass
-                break;
-            case "ice":
-                classType1 = "ice";
-                imgType1 = ice
-                break;
-        }
-
-            switch(pkType2) {
-                case "bug":
-                    classType2 = "bug";
-                    imgType2 = bug
-                    break;
-                case "fighting":
                     classType2 = "fight";
                     imgType2 = fight
                     break;
@@ -571,7 +422,8 @@
                                 </div>
                                 <div className="details">
                                     <div className="name">
-                                    <div className='btn-add'></div>
+                                    <div className='btn-add' onClick={addToPokedex}>    
+                                    </div>
                                         <p>{pokemon.name}</p>
                                 </div>
                                 <div className="number">
