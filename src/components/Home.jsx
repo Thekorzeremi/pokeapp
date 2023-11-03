@@ -47,36 +47,39 @@
             for (let current = 1; current < 250; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites, types } = response.data;
+                const { name, id, sprites, types, stats} = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
                 types,
+                stats,
                 img: officialArtworkURL,
                 });
             }
             for (let current = 250; current < 500; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites, types } = response.data;
+                const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
                 types,
+                stats,
                 img: officialArtworkURL,
                 });
             }
             for (let current = 500; current < 750; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites, types } = response.data;
+                const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
                 types,
+                stats,
                 img: officialArtworkURL,
                 });
 
@@ -84,12 +87,13 @@
             for (let current = 750; current < 1018; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites, types } = response.data;
+                const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
                 types,
+                stats,
                 img: officialArtworkURL,
                 });
 
@@ -97,11 +101,12 @@
             for (let current = 10001; current < 10264; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites } = response.data;
+                const { name, id, sprites, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
+                stats,
                 img: officialArtworkURL,
                 });
 
@@ -240,6 +245,7 @@
             } else {
                 setPkType2("")
             }
+            setPkStats(pokemon.stats)
         };
 
         const closePopup = () => {
@@ -420,46 +426,55 @@
                                         <div className="text-stats">
                                             <p>STA</p>
                                         </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
+                                        <div id="bar-stats">
+                                            <div id="bar-achieve" className={ classType1} style={{ width: `${pkStats[0].base_stat}%` }}></div>
+                                        </div>
                                         <div className="text-stats">
-                                            {/* <p>{pkStats[0]}</p> */}
-                                            <p>100</p>
+                                            <p>{pkStats[0].base_stat}</p>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="text-stats">
                                             <p>ATK</p>
                                         </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
+                                        <div id="bar-stats">
+                                            <div id="bar-achieve" className={ classType1} style={{ width: `${pkStats[1].base_stat}%` }}></div>
+                                        </div>
                                         <div className="text-stats">
-                                            <p>100</p>
+                                            <p>{pkStats[1].base_stat}</p>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="text-stats">
                                             <p>A.SPE</p>
                                         </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
+                                        <div id="bar-stats">
+                                            <div id="bar-achieve" className={ classType1} style={{ width: `${pkStats[2].base_stat}%` }}></div>
+                                        </div>
                                         <div className="text-stats">
-                                            <p>100</p>
+                                            <p>{pkStats[2].base_stat}</p>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="text-stats">
                                             <p>DEF</p>
                                         </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
+                                        <div id="bar-stats">
+                                            <div id="bar-achieve" className={ classType1} style={{ width: `${pkStats[3].base_stat}%` }}></div>
+                                        </div>
                                         <div className="text-stats">
-                                            <p>100</p>
+                                            <p>{pkStats[3].base_stat}</p>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="text-stats">
                                             <p>D.SPE</p>
                                         </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
+                                        <div id="bar-stats">
+                                            <div id="bar-achieve" className={ classType1} style={{ width: `${pkStats[4].base_stat}%` }}></div>
+                                        </div>
                                         <div className="text-stats">
-                                            <p>100</p>
+                                            <p>{pkStats[4].base_stat}</p>
                                         </div>
                                     </div>
                                 </div>
