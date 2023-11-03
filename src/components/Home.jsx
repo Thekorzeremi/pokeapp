@@ -46,8 +46,6 @@
             if (!localStorage.getItem('selectedPokemon')) {
                 localStorage.setItem('selectedPokemon', '[]');
             }
-            const audio = document.getElementById('player');
-            // audio.play();
             const fetchData = async () => {
             const tempPkArray = [];
             for (let current = 1; current < 250; current++) {
@@ -123,7 +121,20 @@
         
         fetchData();
     }, []);
-    
+
+    const audio = document.getElementById('player');
+
+    let musicState = "true";
+    const Musicmanager = () => {
+        if (musicState === "true") {
+            musicState = "false";
+            audio.pause();
+        } else {
+            musicState = "true";
+            audio.play();
+        }
+    };
+
     const filteredPokemon = pkArray.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
@@ -431,7 +442,6 @@
 
         return (
             <div className='content'>
-                <audio autoPlay id="player" src={music} loop></audio>
                 {isPopupOpen && (
                     <div className="popup">
                         <div className="popup-content">
@@ -543,7 +553,9 @@
                     <div id='btn' onClick={FilteredID}>
                         <p>ID</p>
                     </div>
-                </div>
+                    <div className='audio-btn' onClick={Musicmanager}></div>
+                        <audio autoPlay id="player" src={music} loop></audio>
+                    </div>
                 {isLoading ? (
                     <div className="loading">
                         <div className="load-title">
@@ -564,7 +576,7 @@
                                 <div className="details">
                                     <div className="name">
                                     <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>  
-                                        <img src={uncaught} alt="" />  
+                                        <img src={caught} alt="" />  
                                     </div>
                                         <p>{pokemon.name}</p>
                                 </div>
