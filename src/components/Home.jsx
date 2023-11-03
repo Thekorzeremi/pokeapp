@@ -118,6 +118,10 @@
     const filteredPokemon = pkArray.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+        const addToPokedex = () => {
+            console.log("test");
+        }
     
         const FilteredAlpha = () => {
             const sortedPokemon = [...filteredPokemon];
@@ -523,7 +527,8 @@
                                 </div>
                                 <div className="details">
                                     <div className="name">
-                                    <div className='btn-add'></div>
+                                    <div className='btn-add' onClick={addToPokedex}>    
+                                    </div>
                                         <p>{pokemon.name}</p>
                                 </div>
                                 <div className="number">
