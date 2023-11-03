@@ -6,6 +6,71 @@
         align-items: center;
         height: 100%;
         width: 100%;
+        overflow-y: auto;
+        margin-bottom: 2rem;
+        margin-top: 2rem;
+
+        .title {
+            p {
+                font-size: 2.2rem;
+            }
+
+        }
+        
+        .pk-main-row {
+            width: 100%;
+            height: 100%;
+
+            .pk-row {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+
+                .pk-img {
+                    height: 10rem;
+                    width: 10rem;
+                }
+
+                .remove-btn {
+                    height: 4rem;
+                    width:8rem;
+                    background-color: var(--color-fight);
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    p {
+                        color: white;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+
+            }
+
+        }
+
+        .pk-erase {
+
+            .erase-btn {
+                margin-top: 2rem;
+                background-color: rgb(255, 230, 0);
+                height: 3rem;
+                width: 10rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+            }
+
+        }
+
     }
 
 }
