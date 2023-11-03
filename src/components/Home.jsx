@@ -24,7 +24,7 @@
     import steel from '../assets/types/steel.png'
     import load from '../assets/load.gif'
     import music from '../assets/music.mp3'
-    import Pokedex from './Pokedex';
+    import mute from '../assets/mute.png';
 
     export default function Home() {
         const [pkImg, setPkImg] = useState('');
@@ -33,6 +33,7 @@
         const [pkType1, setPkType1] = useState('');
         const [pkType2, setPkType2] = useState('');
         const [pkStats, setPkStats] = useState('');
+        const [pkDescription, setPkDescription] = useState('');
         const [pkArray, setPkArray] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
         const [searchQuery, setSearchQuery] = useState('');
@@ -53,39 +54,73 @@
                 const response = await axios.get(url);
                 const { name, id, sprites, types, stats} = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
+                let description;
+                let response2;
+
+                if (current >= 31) {
+                    description = "Unknown"
+                } else {
+                    response2 = await axios.get(url2);
+                    description = response2.data.descriptions[7].description;
+                }
                 tempPkArray.push({
                 id,
                 name,
                 types,
                 stats,
+                description,
                 img: officialArtworkURL,
-                });
+            });
+
             }
             for (let current = 250; current < 500; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
                 const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
+                let description;
+                let response2;
+
+                if (current >= 31) {
+                    description = "Unknown"
+                } else {
+                    response2 = await axios.get(url2);
+                    description = response2.data.descriptions[7].description;
+                }
                 tempPkArray.push({
                 id,
                 name,
                 types,
                 stats,
+                description,
                 img: officialArtworkURL,
-                });
+            });
             }
             for (let current = 500; current < 750; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
                 const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
+                let description;
+                let response2;
+
+                if (current >= 31) {
+                    description = "Unknown"
+                } else {
+                    response2 = await axios.get(url2);
+                    description = response2.data.descriptions[7].description;
+                }
                 tempPkArray.push({
                 id,
                 name,
                 types,
                 stats,
+                description,
                 img: officialArtworkURL,
-                });
+            });
 
             }
             for (let current = 750; current < 1018; current++) {
@@ -93,13 +128,24 @@
                 const response = await axios.get(url);
                 const { name, id, sprites, types, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
+                let description;
+                let response2;
+
+                if (current >= 31) {
+                    description = "Unknown"
+                } else {
+                    response2 = await axios.get(url2);
+                    description = response2.data.descriptions[7].description;
+                }
                 tempPkArray.push({
                 id,
                 name,
                 types,
                 stats,
+                description,
                 img: officialArtworkURL,
-                });
+            });
 
             }
             for (let current = 10001; current < 10264; current++) {
@@ -107,12 +153,23 @@
                 const response = await axios.get(url);
                 const { name, id, sprites, stats } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
+                let description;
+                let response2;
+
+                if (current >= 31) {
+                    description = "Unknown"
+                } else {
+                    response2 = await axios.get(url2);
+                    description = response2.data.descriptions[7].description;
+                }
                 tempPkArray.push({
                 id,
                 name,
                 stats,
+                description,
                 img: officialArtworkURL,
-                });
+            });
 
             }
             setPkArray(tempPkArray);
@@ -257,6 +314,7 @@
                 setPkType2("")
             }
             setPkStats(pokemon.stats)
+            setPkDescription(pokemon.description)
         };
 
         const closePopup = () => {
@@ -527,8 +585,8 @@
                                 <div className="popup-description">
                                     <p>POKEDEX : { pkId }</p>
                                     <br/>
-                                    <p>ZER DSFQ DSF E RQS DFQ SDF ZER FGDSQ  ZEF SQ </p>
-                                </div>
+                                    <p>{ pkDescription }.</p>
+                                </div> 
                                 <div className="popup-attacks">
                                     <div className="attacks">Eboulement</div>
                                     <div className="attacks">Eboulement</div>
@@ -539,6 +597,10 @@
                         </div>
                     </div>
                 )}
+                <div className='audio-btn' onClick={Musicmanager}>
+                        <img src={mute} alt="" />
+                        <audio autoPlay id="player" src={music} loop></audio>
+                </div>
                 <div className="searchbar">
                     <img src={ pokeball } alt="" />
                     <input type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
