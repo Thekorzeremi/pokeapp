@@ -301,7 +301,7 @@
                 classType1 = "bug";
                 imgType1 = bug
                 break;
-            case "fight":
+            case "fighting":
                 classType1 = "fight";
                 imgType1 = fight
                 break;
@@ -376,7 +376,7 @@
                     classType2 = "bug";
                     imgType2 = bug
                     break;
-                case "fight":
+                case "fighting":
                     classType2 = "fight";
                     imgType2 = fight
                     break;
@@ -571,6 +571,7 @@
                                 </div>
                                 <div className="details">
                                     <div className="name">
+                                    <div className='btn-add'></div>
                                         <p>{pokemon.name}</p>
                                 </div>
                                 <div className="number">
@@ -580,13 +581,14 @@
                     </div>
                     ))
                     ) : (
-                    filteredPokemon.map((pokemon, index) => (
-                        <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
+                        filteredPokemon.map((pokemon, index) => (
+                            <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
                             <div className="pp">
                                 <img src={pokemon.img} alt={pokemon.name} />
                             </div>
                             <div className="details">
                                 <div className="name">
+                                <div className='btn-add'></div>
                                     <p>{pokemon.name}</p>
                                 </div>
                             </div>
