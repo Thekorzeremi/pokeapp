@@ -4,15 +4,18 @@ import logo from '../assets/logo.png'
 
 export default function Pokedex() {
 
+    // RECOVER ALL DATA FROM LOCAL STORAGE & SETTER/GETTER
     const storedData = JSON.parse(localStorage.getItem('selectedPokemon'));
     const [pokemonData, setPokemonData] = useState(storedData);
 
+    // CLEAR ALL LOCAL STORAGE
     const erasePk = () => {
         localStorage.clear();
         alert("ALL POKEMONS REMOVED FROM LOCALSTORAGE")
         window.location.reload();
     }
 
+    // REMOVE 1 POKEMON FROM POKEDEX
     const removePokemon = (index) => {
         const updatedData = [...pokemonData];
         updatedData.splice(index, 1);
