@@ -391,7 +391,7 @@
             classType1 = "bug";
             imgType1 = bug
             break;
-        case "fight":
+        case "fighting":
             classType1 = "fight";
             imgType1 = fight
             break;
@@ -431,7 +431,7 @@
             classType1 = "water";
             imgType1 = water
             break;
-        case "fly":
+        case "flying":
             classType1 = "fly";
             imgType1 = fly
             break;
@@ -473,7 +473,7 @@
                 classType2 = "fight";
                 imgType2 = fight
                 break;
-            case "psy":
+            case "psychic":
                 classType2 = "psy";
                 imgType2 = fight
                 break;
