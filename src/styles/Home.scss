@@ -3,9 +3,14 @@
 }
 
 .audio-btn {
-    height: 4rem;
-    width: 4rem;
-    background-color: pink;
+    position: absolute;
+    right: 1rem;
+    top: -2rem;
+    cursor: pointer;
+
+    img {
+        width: 2rem;
+    }
 }
 
 .loading {
