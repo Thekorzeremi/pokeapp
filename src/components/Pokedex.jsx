@@ -23,7 +23,7 @@ export default function Pokedex() {
         <div className='content'>
             <div className="pk-sct">
                 <div className="title">
-                    <p>My pokédex</p>
+                    <p>My Pokedex</p>
                 </div>
                 <div className="pk-erase">
                     <div className="erase-btn" onClick={erasePk}><p>ERASE ALL</p></div>
