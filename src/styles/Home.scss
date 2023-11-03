@@ -61,7 +61,8 @@
     #btn {
         background-color: var(--color-primary);
         width: 30%;
-        // border-radius: 2rem;
+        height: 100%;
+        min-height: 4rem;
         display: grid;
         place-items: center;
         border: 1px solid var(--color-border);
@@ -87,6 +88,21 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    padding: 4rem;
+
+    &::-webkit-scrollbar {
+        width: 15px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-primary);
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background-color: var(--color-light);
+        border-radius: 10px;
+    }
 }
 
 .cards {

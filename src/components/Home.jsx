@@ -37,7 +37,9 @@ import Pokedex from './Pokedex';
         const [imgArray, setImgArray] = useState([]); // 
         const [isLoading, setIsLoading] = useState(true);
         const [searchQuery, setSearchQuery] = useState('');
-        
+        const [currentAlpha, setCurrentAlpha] = useState(false);
+        const [currentID, setCurrentID] = useState(true);
+        const [currentType, setCurrentType] = useState(false);
         useEffect(() => {
             if (!localStorage.getItem('selectedPokemon')) {
                 localStorage.setItem('selectedPokemon', '[]');
@@ -94,7 +96,6 @@ import Pokedex from './Pokedex';
                 types,
                 img: officialArtworkURL,
                 });
-                console.log(tempPkArray)
 
             }
             for (let current = 10001; current < 10264; current++) {
@@ -107,22 +108,130 @@ import Pokedex from './Pokedex';
                 name,
                 img: officialArtworkURL,
                 });
-                console.log(tempPkArray)
 
             }
             setPkArray(tempPkArray);
             setIsLoading(false);
-            };
+        };
         
-            fetchData();
-        }, []);
+        fetchData();
+    }, []);
+    
+    const [isPopupOpen, setPopupOpen] = useState(false);
+    
+    const filteredPokemon = pkArray.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
 
+        const addToPokedex = () => {
+            console.log("test");
+        }
+    
+        const FilteredAlpha = () => {
+            const sortedPokemon = [...filteredPokemon];
 
-        const [isPopupOpen, setPopupOpen] = useState(false);
+            if (currentAlpha === false) {
+                sortedPokemon.sort((a, b) => {
+                    if (a.name < b.name) {
+                        setCurrentAlpha(true)
+                        return -1;
+                    }
+                    if (a.name > b.name) {
+                        setCurrentAlpha(true)
+                        return 1;
+                    }
+                    setCurrentAlpha(true)
+                    return 0;
+                });
+            } else if (currentAlpha === true){
+                sortedPokemon.sort((a, b) => {
+                    if (a.name < b.name) {
+                        setCurrentAlpha(false);
+                        return 1;
+                    }
+                    if (a.name > b.name) {
+                        setCurrentAlpha(false);
+                        return -1;
+                    }
+                    setCurrentAlpha(false);
+                    return 0;
+                });
+            }
 
-        const filteredPokemon = pkArray.filter((pokemon) =>
-            pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
-        );
+            setPkArray(sortedPokemon);
+        };
+
+        const FilteredID = () => {
+            const sortedPokemon = [...filteredPokemon];
+
+            if (currentID === false) {
+                sortedPokemon.sort((a, b) => {
+                    if (a.id < b.id) {
+                        setCurrentID(true)
+                        return -1;
+                    }
+                    if (a.id > b.id) {
+                        setCurrentID(true)
+                        return 1;
+                    }
+                    setCurrentID(true)
+                    return 0;
+                });
+            } else if (currentID === true){
+                sortedPokemon.sort((a, b) => {
+                    if (a.id < b.id) {
+                        setCurrentID(false)
+                        return 1;
+                    }
+                    if (a.id > b.id) {
+                        setCurrentID(false)
+                        return -1;
+                    }
+                    setCurrentID(false)
+                    return 0;
+                });
+            }
+
+            setPkArray(sortedPokemon);
+        };
+
+        const FilteredType = () => {
+            const sortedPokemon = [...filteredPokemon];
+            sortedPokemon.sort((a, b) => {
+              let atype = (a.types && a.types[0]) ? a.types[0].type.name : "";
+              let btype = (b.types && b.types[0]) ? b.types[0].type.name : "";
+
+              if (currentType === false) {
+                    if (atype < btype) {
+                        setCurrentType(true)
+                        return -1;
+                    }
+                    if (atype > btype) {
+                        setCurrentType(true)
+                        return 1;
+                    }
+                    setCurrentType(true)
+                    return 0;
+                } else if (currentType === true) {
+                    if (atype < btype) {
+                        setCurrentType(false)
+                        return 1;
+                    }
+                    if (atype > btype) {
+                        setCurrentType(false)
+                        return -1;
+                    }
+
+                    setCurrentType(false)
+                    return 0;
+                }
+            });
+          
+            setPkArray(sortedPokemon);
+          };
+          
+          
+    
 
         const openPopup = (pokemon) => {
             setPopupOpen(true);
@@ -414,13 +523,13 @@ import Pokedex from './Pokedex';
                     <input type="text" placeholder="Search" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}/>
                 </div>
                 <div className="filter">
-                    <div className="alpha" id='btn'>
+                    <div className="alpha" id='btn' onClick={FilteredAlpha}>
                         <p>Alphabetics</p>
                     </div>
-                    <div className="type" id='btn'>
+                    <div className="type" id='btn' onClick={FilteredType}>
                         <p>Type</p>
                     </div>
-                    <div id='btn'>
+                    <div id='btn' onClick={FilteredID}>
                         <p>ID</p>
                     </div>
                 </div>
