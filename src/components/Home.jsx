@@ -51,7 +51,7 @@
             const tempPkArray = [];
             for (let current = 1; current < 250; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                const response = await axios.get(url, { crossdomain: true });
+                const response = await axios.get(url);
                 const { name, id, sprites, types, stats} = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
