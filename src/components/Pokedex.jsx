@@ -1,5 +1,6 @@
 import "../styles/Pokedex.scss";
 import React, { useState } from 'react';
+import Popup from '../components/Erase.jsx';
 
 export default function Pokedex() {
 
@@ -8,7 +9,6 @@ export default function Pokedex() {
 
     const erasePk = () => {
         localStorage.clear();
-        alert("LocalStorage bien effacé");
         window.location.reload();
     }
 

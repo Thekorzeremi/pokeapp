@@ -555,7 +555,7 @@ import Pokedex from './Pokedex';
                 {isLoading ? (
                     <div className="loading">
                         <div className="load-title">
-                            Les Pokémon arrivent...
+                            Les Pokémons arrivent...
                         </div>
                         <div className="load-gif">
                             <img src={load} className="gif-logo" alt="load" />
