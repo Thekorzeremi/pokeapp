@@ -24,6 +24,7 @@
     import steel from '../assets/types/steel.png'
     import load from '../assets/load.gif'
     import music from '../assets/music.mp3'
+import Pokedex from './Pokedex';
 
     export default function Home() {
         const [pkImg, setPkImg] = useState('');
@@ -40,6 +41,9 @@
         const [currentID, setCurrentID] = useState(true);
         const [currentType, setCurrentType] = useState(false);
         useEffect(() => {
+            if (!localStorage.getItem('selectedPokemon')) {
+                localStorage.setItem('selectedPokemon', '[]');
+            }
             const audio = document.getElementById('player');
             // audio.play();
             const fetchData = async () => {
@@ -251,6 +255,27 @@
         const closePopup = () => {
             setPopupOpen(false);
 
+        };
+
+        const ls = localStorage;
+        const lsLength = localStorage.length;
+        const [setItem] = useState(); 
+
+        const addPkToLocalStorage = (pokemon) => {
+            let storedData = localStorage.getItem('selectedPokemon');
+            if (!storedData) {
+              storedData = [];
+            } else {
+              storedData = JSON.parse(storedData);
+            }
+          
+            storedData.push({
+              name: pokemon.name,
+              img: pokemon.img,
+              id: pokemon.id,
+            });
+          
+            localStorage.setItem('selectedPokemon', JSON.stringify(storedData));
         };
 
         let classType1;
@@ -542,7 +567,7 @@
                                 </div>
                                 <div className="details">
                                     <div className="name">
-                                    <div className='btn-add' onClick={addToPokedex}>    
+                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>    
                                     </div>
                                         <p>{pokemon.name}</p>
                                 </div>
@@ -559,9 +584,10 @@
                                 <img src={pokemon.img} alt={pokemon.name} />
                             </div>
                             <div className="details">
-                                <div className="name">
-                                <div className='btn-add'></div>
-                                    <p>{pokemon.name}</p>
+                                    <div className="name">
+                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>    
+                                    </div>
+                                        <p>{pokemon.name}</p>
                                 </div>
                             </div>
                             <div className="number">
