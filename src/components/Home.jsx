@@ -55,7 +55,7 @@
                 });
                 console.log(tempPkArray)
             }
-            for (let current = 251; current < 500; current++) {
+            for (let current = 250; current < 500; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
                 const { name, id, sprites, types } = response.data;
@@ -68,7 +68,7 @@
                 });
                 console.log(tempPkArray)
             }
-            for (let current = 501; current < 750; current++) {
+            for (let current = 500; current < 750; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
                 const { name, id, sprites, types } = response.data;
@@ -82,7 +82,7 @@
                 console.log(tempPkArray)
 
             }
-            for (let current = 751; current < 1018; current++) {
+            for (let current = 750; current < 1018; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
                 const { name, id, sprites, types } = response.data;
