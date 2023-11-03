@@ -561,8 +561,8 @@ import Pokedex from './Pokedex';
                 <div className="container">
                     {searchQuery === '' ? (
                         pkArray.map((pokemon, index) => (
-                            <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
-                                <div className="pp">
+                            <div className="cards">
+                                <div className="pp" onClick={() => openPopup(pokemon)} key={index}>
                                     <img src={pokemon.img} alt={pokemon.name} />
                                 </div>
                                 <div className="details">
@@ -579,8 +579,8 @@ import Pokedex from './Pokedex';
                     ))
                     ) : (
                         filteredPokemon.map((pokemon, index) => (
-                            <div className="cards" onClick={() => openPopup(pokemon)} key={index}>
-                            <div className="pp">
+                            <div className="cards">
+                            <div className="pp" onClick={() => openPopup(pokemon)} key={index}>
                                 <img src={pokemon.img} alt={pokemon.name} />
                             </div>
                             <div className="details">
