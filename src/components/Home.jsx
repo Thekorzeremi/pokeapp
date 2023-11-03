@@ -24,7 +24,7 @@
     import steel from '../assets/types/steel.png'
     import load from '../assets/load.gif'
     import music from '../assets/music.mp3'
-import Pokedex from './Pokedex';
+    import Pokedex from './Pokedex';
 
     export default function Home() {
         const [pkImg, setPkImg] = useState('');
@@ -563,7 +563,8 @@ import Pokedex from './Pokedex';
                                 </div>
                                 <div className="details">
                                     <div className="name">
-                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>    
+                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>  
+                                        <img src={uncaught} alt="" />  
                                     </div>
                                         <p>{pokemon.name}</p>
                                 </div>
