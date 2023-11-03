@@ -144,6 +144,16 @@
             display: flex;
             top: 0;
             right: 0;
+
+            p {
+                font-weight: 500;
+            }
+        }
+
+        .btn-add {
+            background-color: red;
+            height: 2rem;
+            width: 2rem;
         }
     }
 }
