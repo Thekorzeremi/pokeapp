@@ -11,20 +11,59 @@
         margin-top: 2rem;
 
         .title {
+            display: flex;
+            align-items: center;
+
+            img {
+                width: 2.5rem;
+                height: 2.5rem;
+                margin-right: .6rem;
+                animation: rotate 2s linear infinite;
+            }
+
+            @keyframes rotate {
+                from {
+                  transform: rotate(0deg);
+                }
+                to {
+                  transform: rotate(360deg);
+                }
+              }
+
             p {
                 font-size: 2.2rem;
             }
 
         }
         
+        &::-webkit-scrollbar {
+            width: 15px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-primary);
+            border-radius: 10px;
+        }
+        
+        &::-webkit-scrollbar-track {
+            background-color: var(--color-light);
+            border-radius: 10px;
+        }
         .pk-main-row {
             width: 100%;
-            height: 100%;
+            height: auto;
+
 
             .pk-row {
                 display: flex;
                 justify-content: space-around;
                 align-items: center;
+                border-bottom: 1px solid var(--color-primary);
+                margin: 1rem 2rem;
+
+                p::first-letter {
+                    text-transform: uppercase;
+                }
 
                 .pk-img {
                     height: 10rem;
@@ -35,9 +74,15 @@
                     height: 4rem;
                     width:8rem;
                     background-color: var(--color-fight);
+                    border: 2px solid #9f0538;
                     display: flex;
                     justify-content: center;
                     align-items: center;
+                    transition: all .3s ease-in-out;
+
+                    &:hover {
+                        transform: scale(1.02);
+                    }
 
                     p {
                         color: white;
@@ -56,15 +101,18 @@
 
             .erase-btn {
                 margin-top: 2rem;
-                background-color: rgb(255, 230, 0);
+                background-color: var(--color-electric);
+                border: 2px solid #d6d771;
                 height: 3rem;
                 width: 10rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                transition: all .3s ease-in-out;
+                cursor: pointer;
 
                 &:hover {
-                    cursor: pointer;
+                    transform: scale(1.02);
                 }
 
             }

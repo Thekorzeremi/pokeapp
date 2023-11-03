@@ -1,5 +1,6 @@
 import "../styles/Pokedex.scss";
 import React, { useState } from 'react';
+import logo from '../assets/logo.png'
 
 export default function Pokedex() {
 
@@ -23,6 +24,7 @@ export default function Pokedex() {
         <div className='content'>
             <div className="pk-sct">
                 <div className="title">
+                    <img src={ logo } alt="" />
                     <p>My Pokedex</p>
                 </div>
                 <div className="pk-erase">
@@ -33,9 +35,15 @@ export default function Pokedex() {
                     <div className="pk-main-row">
                             <div className="pk-row">
                                 <div className="pk-img"><img src={pokemon.img} alt="" /></div>
-                                <div className="pk-name">{pokemon.name}</div>
-                                <div className="pk-id">{pokemon.id}</div>
-                                <div className="remove-btn" onClick={() => removePokemon(index)}><p>REMOVE</p></div>
+                                <div className="pk-name">
+                                    <p>{pokemon.name}</p>
+                                </div>
+                                <div className="pk-id">
+                                    <p>{pokemon.id}</p>
+                                </div>
+                                <div className="remove-btn" onClick={() => removePokemon(index)}>
+                                    <p>REMOVE</p>
+                                </div>
                             </div>
                     </div>
                 )}

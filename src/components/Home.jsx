@@ -431,7 +431,7 @@
 
         return (
             <div className='content'>
-                <audio autoPlay id="player" src={music} loop></audio>
+                {/* <audio autoPlay id="player" src={music} loop></audio> */}
                 {isPopupOpen && (
                     <div className="popup">
                         <div className="popup-content">

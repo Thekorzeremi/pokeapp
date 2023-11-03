@@ -55,7 +55,7 @@ img {
   --color-fly: #DBF2F9;
   --color-normal: #D1D3D3;
   --color-rock: #C6A65F;
-  --color-electic: #FCFF82;
+  --color-electric: #FCFF82;
   --color-grass: #27BA7A;
   --color-ice: #00C5CC;
   --color-steel: #395863;
@@ -118,7 +118,7 @@ img {
 }
 
 .electric {
-  background-color: var(--color-electic);
+  background-color: var(--color-electric);
 }
 
 .grass {
