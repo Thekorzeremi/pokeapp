@@ -96,13 +96,10 @@
     margin: 2rem 1rem 0 1rem;
     cursor: pointer;
     transition: all .3s ease-in-out;
-    // border: 1px solid transparent;
     border: none;
     
     &:hover {
-        transform: scale(1.17);
-        // border: 1px solid #1181851a;
-        border: none;
+        transform: scale(1.05);
 
         img {
             transform: rotate(360deg);

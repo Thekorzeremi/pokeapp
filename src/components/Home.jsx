@@ -39,19 +39,62 @@
         
         useEffect(() => {
             const audio = document.getElementById('player');
-            audio.play();
+            // audio.play();
             const fetchData = async () => {
             const tempPkArray = [];
-            for (let current = 1; current < 1018; current++) {
+            for (let current = 1; current < 250; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
                 const response = await axios.get(url);
-                const { name, id, sprites } = response.data;
+                const { name, id, sprites, types } = response.data;
                 const officialArtworkURL = sprites.other['official-artwork'].front_default;
                 tempPkArray.push({
                 id,
                 name,
+                types,
                 img: officialArtworkURL,
                 });
+                console.log(tempPkArray)
+            }
+            for (let current = 251; current < 500; current++) {
+                const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
+                const response = await axios.get(url);
+                const { name, id, sprites, types } = response.data;
+                const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                tempPkArray.push({
+                id,
+                name,
+                types,
+                img: officialArtworkURL,
+                });
+                console.log(tempPkArray)
+            }
+            for (let current = 501; current < 750; current++) {
+                const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
+                const response = await axios.get(url);
+                const { name, id, sprites, types } = response.data;
+                const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                tempPkArray.push({
+                id,
+                name,
+                types,
+                img: officialArtworkURL,
+                });
+                console.log(tempPkArray)
+
+            }
+            for (let current = 751; current < 1018; current++) {
+                const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
+                const response = await axios.get(url);
+                const { name, id, sprites, types } = response.data;
+                const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                tempPkArray.push({
+                id,
+                name,
+                types,
+                img: officialArtworkURL,
+                });
+                console.log(tempPkArray)
+
             }
             for (let current = 10001; current < 10264; current++) {
                 const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
@@ -63,6 +106,8 @@
                 name,
                 img: officialArtworkURL,
                 });
+                console.log(tempPkArray)
+
             }
             setPkArray(tempPkArray);
             setIsLoading(false);
@@ -83,6 +128,12 @@
             setPkImg(pokemon.img);
             setPkName(pokemon.name);
             setPkId(pokemon.id);
+            setPkType1(pokemon.types[0].type.name);
+            if (pokemon.types.length > 1) {
+                setPkType2(pokemon.types[1].type.name);
+            } else {
+                setPkType2("")
+            }
         };
 
         const closePopup = () => {
@@ -244,11 +295,6 @@
                     imgType2 = ice
                     break;
         }
-
-        // let classType1;
-        // let classType2;
-        // let imgType1;
-        // let imgType2;
 
         switch(pkType1) {
             case "bug":
@@ -420,19 +466,11 @@
                                         </div>
                                         <div id="bar-stats" className={ classType1 }></div>
                                         <div className="text-stats">
-                                            <p>STA</p>
-                                        </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
-                                        <div className="text-stats">
-                                            <p>{pkStats[0]}</p>
+                                            {/* <p>{pkStats[0]}</p> */}
                                             <p>100</p>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="text-stats">
-                                            <p>ATK</p>
-                                        </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
                                         <div className="text-stats">
                                             <p>ATK</p>
                                         </div>
@@ -447,10 +485,6 @@
                                         </div>
                                         <div id="bar-stats" className={ classType1 }></div>
                                         <div className="text-stats">
-                                            <p>A.SPE</p>
-                                        </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
-                                        <div className="text-stats">
                                             <p>100</p>
                                         </div>
                                     </div>
@@ -460,18 +494,10 @@
                                         </div>
                                         <div id="bar-stats" className={ classType1 }></div>
                                         <div className="text-stats">
-                                            <p>DEF</p>
-                                        </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
-                                        <div className="text-stats">
                                             <p>100</p>
                                         </div>
                                     </div>
                                     <div className="row">
-                                        <div className="text-stats">
-                                            <p>D.SPE</p>
-                                        </div>
-                                        <div id="bar-stats" className={ classType1 }></div>
                                         <div className="text-stats">
                                             <p>D.SPE</p>
                                         </div>
@@ -495,17 +521,9 @@
                                         <p>{ pkType2 }</p>
                                         <img src={imgType2} alt="" />
                                         </div>
-                                    <div id="type" className={classType1 }>
-                                        <p>{ pkType1 }</p>
-                                        <img src={imgType1} alt="" />
-                                        </div>
-                                    <div id="type" className={classType2}>
-                                        <p>{ pkType2 }</p>
-                                        <img src={imgType2} alt="" />
-                                        </div>
                                 </div>
                                 <div className="popup-description">
-                                    <p>ID : { pkId }</p>
+                                    <p>POKEDEX : { pkId }</p>
                                     <br/>
                                     <p>ZER DSFQ DSF E RQS DFQ SDF ZER FGDSQ  ZEF SQ </p>
                                 </div>
@@ -556,7 +574,7 @@
                                         <p>{pokemon.name}</p>
                                 </div>
                                 <div className="number">
-                                    <p>ID: {pokemon.id}</p>
+                                    <p>{pokemon.id}</p>
                                 </div>
                             </div>
                     </div>
@@ -573,7 +591,7 @@
                                 </div>
                             </div>
                             <div className="number">
-                                <p>ID: {pokemon.id}</p>
+                                <p>{pokemon.id}</p>
                             </div>
                         </div>
                     )))}
