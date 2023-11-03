@@ -33,13 +33,15 @@ import Pokedex from './Pokedex';
         const [pkType1, setPkType1] = useState('');
         const [pkType2, setPkType2] = useState('');
         const [pkStats, setPkStats] = useState('');
-        const [pkArray, setPkArray] = useState([]); // State pour stocker les données des Pokémon
-        const [imgArray, setImgArray] = useState([]); // 
+        const [pkArray, setPkArray] = useState([]);
         const [isLoading, setIsLoading] = useState(true);
         const [searchQuery, setSearchQuery] = useState('');
         const [currentAlpha, setCurrentAlpha] = useState(false);
         const [currentID, setCurrentID] = useState(true);
         const [currentType, setCurrentType] = useState(false);
+        const [isPopupOpen, setPopupOpen] = useState(false);
+
+
         useEffect(() => {
             if (!localStorage.getItem('selectedPokemon')) {
                 localStorage.setItem('selectedPokemon', '[]');
@@ -122,15 +124,9 @@ import Pokedex from './Pokedex';
         fetchData();
     }, []);
     
-    const [isPopupOpen, setPopupOpen] = useState(false);
-    
     const filteredPokemon = pkArray.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(searchQuery.toLowerCase())
     );
-
-        const addToPokedex = () => {
-            console.log("test");
-        }
     
         const FilteredAlpha = () => {
             const sortedPokemon = [...filteredPokemon];
@@ -256,10 +252,6 @@ import Pokedex from './Pokedex';
             setPopupOpen(false);
 
         };
-
-        const ls = localStorage;
-        const lsLength = localStorage.length;
-        const [setItem] = useState(); 
 
         const addPkToLocalStorage = (pokemon) => {
             let storedData = localStorage.getItem('selectedPokemon');
@@ -551,7 +543,7 @@ import Pokedex from './Pokedex';
                 {isLoading ? (
                     <div className="loading">
                         <div className="load-title">
-                            Les Pokémon arrivent...
+                            Les Pokémons arrivent...
                         </div>
                         <div className="load-gif">
                             <img src={load} className="gif-logo" alt="load" />
