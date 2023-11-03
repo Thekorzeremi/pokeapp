@@ -269,14 +269,18 @@ import Pokedex from './Pokedex';
               storedData = JSON.parse(storedData);
             }
           
-            storedData.push({
-              name: pokemon.name,
-              img: pokemon.img,
-              id: pokemon.id,
-            });
+            const isAlreadyAdded = storedData.some((item) => item.id === pokemon.id);
+
+            if (!isAlreadyAdded) {
+              storedData.push({
+                name: pokemon.name,
+                img: pokemon.img,
+                id: pokemon.id,
+              })
           
             localStorage.setItem('selectedPokemon', JSON.stringify(storedData));
-        };
+            };
+        }
 
         let classType1;
         let classType2;
