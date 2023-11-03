@@ -192,7 +192,7 @@
             audio.volume = 0.5;
         } else {
             musicState = "true";
-            audio.play();
+            audio.play(); 
             audio.volume = 0.5;
         }
     };
@@ -604,7 +604,7 @@
                 )}
                 <div className='audio-btn' onClick={Musicmanager}>
                         <img src={mute} alt="" />
-                        <audio autoPlay id="player" src={music} loop></audio>
+                        {/* <audio autoPlay id="player" src={music} loop></audio> */}
                 </div>
                 <div className="searchbar">
                     <img src={ pokeball } alt="" />

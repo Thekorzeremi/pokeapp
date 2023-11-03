@@ -121,26 +121,26 @@
     width: 13vw;
     height: 30vh;
     margin: 2rem 1rem 0 1rem;
-    cursor: pointer;
     transition: all .3s ease-in-out;
     border: none;
     
     &:hover {
         transform: scale(1.05);
-
+        
         img {
             transform: rotate(360deg);
         }
     }
-
+    
     p {
         color: var(--color-primary);
         margin: .5rem 1rem;
     }
-
+    
     .pp {
         width: 100%;
         height: 70%;
+        cursor: pointer;
     }
 
     .details {
@@ -148,6 +148,7 @@
         height: 30%;
         display: flex;
         justify-content: center;
+        cursor: default;
 
         .name {
             height: 100%;
@@ -181,6 +182,7 @@
             z-index: 998;
             height: 2rem;
             width: 2rem;
+            cursor: pointer;
         }
     }
 }
