@@ -46,10 +46,6 @@
             if (!localStorage.getItem('selectedPokemon')) {
                 localStorage.setItem('selectedPokemon', '[]');
             }
-            const storedPk = JSON.parse(localStorage.getItem('selectedPokemon'));
-            const isUpdate = () => {
-                
-            } 
             const fetchData = async () => {
             const tempPkArray = [];
             for (let current = 1; current < 250; current++) {
@@ -121,11 +117,14 @@
             }
             setPkArray(tempPkArray);
             setIsLoading(false);
+            
+            
         };
         
         fetchData();
     }, []);
-
+    
+    const tempStatus = JSON.parse(localStorage.getItem('selectedPokemon'));
     const audio = document.getElementById('player');
 
     let musicState = "true";
@@ -133,9 +132,11 @@
         if (musicState === "true") {
             musicState = "false";
             audio.pause();
+            audio.volume = 0.5;
         } else {
             musicState = "true";
             audio.play();
+            audio.volume = 0.5;
         }
     };
 
@@ -580,7 +581,7 @@
                                 <div className="details">
                                     <div className="name">
                                     <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>  
-                                        <img src={caught} alt="" />  
+                                        <img src={tempStatus.some(item => item.id === pokemon.id) ? caught : uncaught} alt="" />  
                                     </div>
                                         <p>{pokemon.name}</p>
                                 </div>
