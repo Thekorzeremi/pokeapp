@@ -661,7 +661,8 @@
                             </div>
                             <div className="details">
                                     <div className="name">
-                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>    
+                                    <div className='btn-add' onClick={() => addPkToLocalStorage(pokemon)}>  
+                                        <img src={tempStatus.some(item => item.id === pokemon.id) ? caught : uncaught} alt="" />  
                                     </div>
                                         <p>{pokemon.name}</p>
                                 </div>
