@@ -54,160 +54,62 @@
 
 
             const fetchData = async () => {
-                const totalPokemonCount = 1018;
+                const totalPokemonCount = 1008;
                 const tempPkArray = [];
 
-                // LOOP WITH OUR REQUESTS, WHICH ARE SPLIT INTO 5 TO REDUCE LOADING TIMES
-                for (let current = 1; current < 250; current++) {
-                    // REQUEST FOR INFORMATION ON ALL POKEMONS
-                    const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                    const response = await axios.get(url);
-
-                    // STORE INFORMATION OF INTEREST IN VARIABLES
-                    const { name, id, sprites, types, stats} = response.data;
-                    const officialArtworkURL = sprites.other['official-artwork'].front_default;
-
-                    // REQUEST FOR DESCRIPTIONS FOR THE FIRST 30 POKEMONS
-                    const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
-                    let description;
-                    let response2;
-
-                    // POKEMONS ABOVE 31 DON'T HAVE DESCRIPTIONS, SO WE ONLY COLLECT THEM AND PUT "UNKNOWN" ON THE OTHERS.
-                    if (current >= 31) {
-                        description = "Unknown"
-                    } else {
-                        response2 = await axios.get(url2);
-                        description = response2.data.descriptions[7].description;
-                    }
-
-                    // PUSH ALL INFORMATIONS IN AN ARRAY
-                    tempPkArray.push({
-                    id,
-                    name,
-                    types,
-                    stats,
-                    description,
-                    img: officialArtworkURL,
-                    });
-
-                    const newLoadingPercentage = Math.round((current / totalPokemonCount) * 10);
-                    setLoadingPercent(newLoadingPercentage);
+                const fetchPokemonData = async (start, end) => {
+                    let current;
+                    const promises = [];
+                    for (let current = start; current < end; current++) {
+                        try {
+                            const pokemonPromise = axios.get(`https://pokeapi.co/api/v2/pokemon/${current}`);
+                            promises.push(pokemonPromise);
+                          } catch (error) {
+                            console.error(`Error fetching Pokemon ${current}:`, error.message);
+                          }
                 }
+                const responses = await Promise.allSettled(promises);
 
-                // SAME
-                for (let current = 250; current < 500; current++) {
-                    const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                    const response = await axios.get(url);
-                    const { name, id, sprites, types, stats } = response.data;
-                    const officialArtworkURL = sprites.other['official-artwork'].front_default;
-                    const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
-                    let description;
-                    let response2;
-
-                    if (current >= 31) {
-                        description = "Unknown"
+                for (const response of responses) {
+                    if (response.status === 'fulfilled') {
+                      const { name, id, sprites, types, stats } = response.value.data;
+                      const officialArtworkURL = sprites.other['official-artwork'].front_default;
+                      const img = officialArtworkURL;
+              
+                      let description = 'No description';
+                      if (current < 31) {
+                        try {
+                          const descriptionResponse = await axios.get(`https://pokeapi.co/api/v2/characteristic/${current}`);
+                          description = descriptionResponse.data.descriptions[7].description;
+                        } catch (error) {
+                          console.error(`Error fetching description for Pokemon ${current}:`, error.message);
+                        }
+                      }
+              
+                      tempPkArray.push({
+                        id,
+                        name,
+                        types,
+                        stats,
+                        description,
+                        img,
+                      });
                     } else {
-                        response2 = await axios.get(url2);
-                        description = response2.data.descriptions[7].description;
+                      // La requête a échoué pour une raison autre que le 404 (peut-être une autre erreur HTTP)
+                      console.error(`Request failed for Pokemon ${current}:`, response.reason);
                     }
-                    tempPkArray.push({
-                    id,
-                    name,
-                    types,
-                    stats,
-                    description,
-                    img: officialArtworkURL,
-                    });
-
-                    const newLoadingPercentage = Math.round((current / totalPokemonCount) * 10);
-                    setLoadingPercent(newLoadingPercentage);
-                }
-
-                // SAME
-                for (let current = 500; current < 750; current++) {
-                    const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                    const response = await axios.get(url);
-                    const { name, id, sprites, types, stats } = response.data;
-                    const officialArtworkURL = sprites.other['official-artwork'].front_default;
-                    const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
-                    let description;
-                    let response2;
-
-                    if (current >= 31) {
-                        description = "Unknown"
-                    } else {
-                        response2 = await axios.get(url2);
-                        description = response2.data.descriptions[7].description;
                     }
-                    tempPkArray.push({
-                    id,
-                    name,
-                    types,
-                    stats,
-                    description,
-                    img: officialArtworkURL,
-                    });
-
-                    const newLoadingPercentage = Math.round((current / totalPokemonCount) * 10);
-                    setLoadingPercent(newLoadingPercentage);
                 }
-
-                // SAME
-                for (let current = 750; current < 1018; current++) {
-                    const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                    const response = await axios.get(url);
-                    const { name, id, sprites, types, stats } = response.data;
-                    const officialArtworkURL = sprites.other['official-artwork'].front_default;
-                    const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
-                    let description;
-                    let response2;
-
-                    if (current >= 31) {
-                        description = "Unknown"
-                    } else {
-                        response2 = await axios.get(url2);
-                        description = response2.data.descriptions[7].description;
-                    }
-                    tempPkArray.push({
-                    id,
-                    name,
-                    types,
-                    stats,
-                    description,
-                    img: officialArtworkURL,
-                    });
-
-                    const newLoadingPercentage = Math.round((current / totalPokemonCount) * 10);
-                    setLoadingPercent(newLoadingPercentage);
-                }
-
-                // SAME
-                for (let current = 10001; current < 10264; current++) {
-                    const url = `https://pokeapi.co/api/v2/pokemon/${current}`;
-                    const response = await axios.get(url);
-                    const { name, id, sprites, stats } = response.data;
-                    const officialArtworkURL = sprites.other['official-artwork'].front_default;
-                    const url2 = `https://pokeapi.co/api/v2/characteristic/${current}`;
-                    let description;
-                    let response2;
-
-                    if (current >= 31) {
-                        description = "Unknown"
-                    } else {
-                        response2 = await axios.get(url2);
-                        description = response2.data.descriptions[7].description;
-                    }
-                    tempPkArray.push({
-                    id,
-                    name,
-                    stats,
-                    description,
-                    img: officialArtworkURL,
-                    });
-
-                    const newLoadingPercentage = Math.round((current / totalPokemonCount) * 10 -1);
-                    setLoadingPercent(newLoadingPercentage);
-                }
+              
+        
+              // Fetch Pokémon data in chunks
+              const chunkSize = 125;
+              for (let i = 1; i <= totalPokemonCount; i += chunkSize) {
+                await fetchPokemonData(i, i + chunkSize);
+                const loadingPercentage = Math.round((i / totalPokemonCount) * 100);
+                setLoadingPercent(loadingPercentage);
+              }
+                
 
                 // SET POKEMON ARRAY WITH TEMP ARRAY & FINISH LOADER
                 setPkArray(tempPkArray);
